@@ -50,7 +50,7 @@ tests = testGroup "unit tests"
 
 testLock :: TestTree
 testLock = check "publish"
-    (     walletFundsChange w1 (Ada.lovelaceValueOf (-100_000_000))
+    (     walletFundsChange w1 (Ada.lovelaceValueOf (-80_000_000))
      .&&. walletFundsChange w2 (Ada.lovelaceValueOf 0)
      .&&. walletFundsChange w3 (Ada.lovelaceValueOf 0)
     )
@@ -59,6 +59,6 @@ testLock = check "publish"
         void $ Emulator.waitNSlots 2
         callEndpoint @"publish" hdl1 (1, Ada.lovelaceValueOf 50_000_000)
         void $ Emulator.waitNSlots 2
-        callEndpoint @"publish" hdl1 (2, Ada.lovelaceValueOf 50_000_000)
+        callEndpoint @"publish" hdl1 (2, Ada.lovelaceValueOf 30_000_000)
         void $ Emulator.waitNSlots 2
 
